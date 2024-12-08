@@ -8,6 +8,10 @@ const addNewExpense = async (req, res) => {
         if (!title || !amount || !category || !date) {
             return res.status(400).json({message: "Please fill all the fields"});
         };
+        const validCategory = ['Groceries', 'Leisure', 'Electronics', 'Utilities', 'Clothing', 'Health', 'Others'];
+        if (category && !validCategory.includes(category)) {
+            return res.status(400).json({message: `Invalid category. Allowed categories are : ${validCategory.join(", ")}`});
+        };
         const expense = new Expense({
             title,
             amount,

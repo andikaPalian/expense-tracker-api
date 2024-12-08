@@ -6,7 +6,8 @@ const expenseSchema = new mongoose.Schema({
     category: {
         type: String,
         enum: ['Groceries', 'Leisure', 'Electronics', 'Utilities', 'Clothing', 'Health', 'Others'],
-        required: true
+        required: true,
+        message: "Category must be one of : Groceries, Leisure, Electronics, Utilities, Clothing, Health, Others",
     },
     date: {type: Date, required: true},
     userId: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},
